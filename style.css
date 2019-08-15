@@ -1126,7 +1126,7 @@ body .meta a,
 
 /* Do not fix #header for non-desktops */
 @media screen and ( max-width: 782px ) {
-	#header {
+	#header #bb-nav {
 		z-index: 999999;
 	}
 	#main {

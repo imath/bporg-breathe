@@ -1,0 +1,99 @@
+.o2-hovercard.wp-pointer-top .wp-pointer-arrow {
+	border-bottom-color: #ddd;
+}
+
+.o2-hovercard.wp-pointer-top .wp-pointer-arrow {
+	left: 10px;
+}
+
+.o2-hovercard.wp-pointer-top .wp-pointer-arrow-inner {
+	border-bottom-color: #fff;
+}
+
+.o2-hovercard .wp-pointer-buttons {
+	display: none;
+}
+
+.o2-hovercard .wp-pointer-content {
+    padding-bottom: 0;
+}
+
+.o2-hovercard .o2hc-ticket {
+	display: flex;
+	padding: 0 16px;
+	margin-top: 16px;
+	font-family: -apple-system, 'Open Sans', sans-serif;
+}
+
+.o2-hovercard .o2hc-avatar {
+	align-self: flex-start;
+}
+
+.o2-hovercard .o2hc-avatar img.avatar {
+	width: 50px;
+	max-width: 50px;
+	height: 50px;
+}
+
+.o2-hovercard .o2hc-description {
+	overflow: hidden;
+	margin-left: 16px;
+}
+
+.o2-hovercard .o2hc-description p {
+	padding: 0;
+}
+
+.o2-hovercard .o2hc-title {
+	font-weight: 600;
+	color: #24292e;
+}
+
+.o2-hovercard .o2hc-subtitle,
+.o2-hovercard .o2hc-subtitle a {
+	font-weight: normal;
+	color: #586069;
+}
+
+.o2-hovercard ul.keywords {
+	margin: 0;
+}
+
+.o2-hovercard ul.keywords li {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.o2-hovercard table.meta {
+    border: none;
+    margin: 20px 0 5px 0;
+}
+
+.o2-hovercard table.meta thead,
+.o2-hovercard table.meta thead tr {
+    border: none;
+    background: none;
+}
+
+.o2-hovercard table.meta td,
+.o2-hovercard table.meta th {
+    width: auto;
+    padding: 0.5px;
+    text-align: center;
+    border: none;
+}
+
+.o2-hovercard table.meta th {
+    font-weight: 600;
+}
+
+.o2-hovercard .o2hc-loader {
+	display: block;
+	margin: 16px auto;
+}
+
+.o2-hovercard .o2hc-container p.error {
+	margin: 16px 16px 0;
+    border-left: solid 4px #a00;
+    padding: 16px;
+}

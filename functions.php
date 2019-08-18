@@ -9,6 +9,10 @@
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
 
+if ( function_exists( 'o2_hovercards_add_service' ) ) {
+	require __DIR__ . '/inc/o2-hovercards.php';
+}
+
 /**
  * Sets up theme defaults.
  */

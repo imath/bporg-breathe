@@ -142,7 +142,7 @@ namespace {
 		return o2_hovercards_add_service(
 			array(
 				'service'  => 'trac',
-				'key'      => '#(\d+)-(core|ios|android|blackberry|nokia|webos|plugins|bbpress|supportpress|glotpress|backpress|buddypress|windows)',
+				'key'      => '#(\d+)-(core|ios|android|blackberry|nokia|webos|plugins|bbpress|supportpress|glotpress|backpress|buddypress|meta|windows)',
 				'url'      => '<a href="https://$2.trac.wordpress.org/ticket/$1">$0</a>',
 				'ticket'   => '$1-$2',
 				'callback' => __NAMESPACE__ . '\handle_trac',

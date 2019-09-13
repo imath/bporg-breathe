@@ -12,12 +12,14 @@
  * Supports Oxygen: true
  */
 
- #header {
+#header {
 	background-color: #be3631;
 	border-bottom: 1px solid #9e1611;
 	width: 100%;
 	z-index: 99;
 	font-size: 13px;
+	position: fixed;
+	top: 0;
 }
 
 #header-inner {
@@ -27,9 +29,27 @@
 	padding: 0;
 }
 
+body.admin-bar header#masthead {
+	margin-top: 123px;
+}
+
+#wp-toolbar, #header-inner {
+	margin: 0 auto;
+}
+
+#wp-admin-bar-my-account img.avatar {
+	border-radius: 50%;
+}
+
 @media screen and (min-width: 960px) {
-	#header-inner, #footer {
+	#header-inner, #footer, #wp-toolbar {
 		max-width: 960px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	#header {
+		position: absolute;
 	}
 }
 
@@ -98,6 +118,10 @@
 
 #nav li a.active {
 	color: #fff;
+}
+
+#nav li.current-menu-item a {
+	background-color: #dd823b;
 }
 
 .hidden	{
@@ -189,7 +213,7 @@ td {
 .entry-content th,
 #primary thead td,
 #primary thead th {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 td:first-of-type {
@@ -209,25 +233,6 @@ p a:hover {
 
 input[type="submit"] {
 	height: auto;
-}
-
-/* bporg-header overrides */
-#bporg-header input.text {
-	font-size: 12px !important;
-	padding: 3px;
-	box-sizing: content-box;
-}
-
-#bporg-header input[type="submit"] {
-	box-shadow: none;
-}
-
-#bporg-header ul li.download {
-	float: right;
-	height: 34px;
-	margin-right: 14px;
-	overflow: hidden;
-	padding: 0 0 34px;
 }
 
 .site,
@@ -266,13 +271,13 @@ input[type="submit"] {
 
 .site-header .site-title a:before {
 	-webkit-font-smoothing: antialiased;
-    font: normal 32px/1 'Genericons';
-    display: inline-block;
-    color: #fff;
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
-    padding-right: 5px;
+	font: normal 32px/1 'Genericons';
+	display: inline-block;
+	color: #fff;
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+	padding-right: 5px;
 	position: relative;
 	top: -2px;
 }
@@ -314,9 +319,9 @@ body.contribute-documentation .site-title a:before {
 
 @media (max-width: 320px) {
 	.site-header .site-title {
-        max-width: 240px;
+		max-width: 240px;
 	}
-    .site-header .site-title a {
+	.site-header .site-title a {
 		font-size: 13px;
 		font-size: 4.2vw;
 	}
@@ -1126,7 +1131,7 @@ body .meta a,
 
 /* Do not fix #header for non-desktops */
 @media screen and ( max-width: 782px ) {
-	#header #bb-nav {
+	#header {
 		z-index: 999999;
 	}
 	#main {
@@ -1158,6 +1163,7 @@ body .meta a,
 		position: absolute;
 		width: 100%;
 		right: 0;
+		top: 81px;
 		border-bottom: 1px solid #aaa;
 	}
 	#header #bb-nav li {

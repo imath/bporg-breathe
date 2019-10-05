@@ -952,6 +952,20 @@ nav.o2-post-footer-actions ul li > span > a {
 	display: none;
 }
 
+/* JetPack Contact Form */
+.contact-submit button[type="submit"] {
+	color: #FFF;
+	border-radius: 0;
+	box-shadow: none;
+	text-shadow: none;
+	border: solid 1px #c1403b;
+}
+
+.contact-submit button[type="submit"]:hover {
+	background-color: #FFF !important;
+	color: #c1403b;
+}
+
 @media screen and (min-width: 960px) {
 	.contribute-welcome .entry-content p {
 		display: block;
@@ -1038,10 +1052,402 @@ nav.o2-post-footer-actions ul li > span > a {
 }
 
 /*
- * Callout boxes
+ * Handbook
  */
+
+.post-type-archive-handbook .site-main .widget-area,
+.single-handbook .site-main .widget-area {
+	float: left;
+	margin-right: 4%;
+}
+.handbook-header {
+	line-height: 2em;
+}
+.handbook-header h1 {
+	margin-top: 0;
+}
+
+.single-handbook .content-area h1 {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.single-handbook .o2-post {
+	border-top: none;
+}
+
+.post-type-archive-handbook .handbook-name a:not(:hover),
+.single-handbook .handbook-name a:not(:hover) {
+	color: inherit;
+}
+
+.handbook-name-container {
+	position: absolute;
+	right: 0;
+	width: 75%;
+	margin-left: 25%;
+	background-color: #fff;
+}
+
+.single-handbook .handbook-name-container + #primary {
+padding-top: 5rem;
+}
+
+/*
+* Callout boxes
+*/
+
 .post .callout {
 	padding-bottom: 0;
+}
+
+@media(max-width: 876px) {
+	.handbook-name-container {
+		width: 100%;
+		margin-left: 0;
+	}
+}
+
+.handbook-name {
+	text-align: center;
+	color: #aaa;
+	margin-top: 1em;
+	overflow: hidden;
+	letter-spacing: 2px;
+	font-size: 1.5em;
+	text-transform: uppercase;
+	border-bottom: 0;
+}
+.handbook-name span {
+	display: inline-block;
+	position: relative;
+}
+.handbook-name span:before,
+.handbook-name span:after {
+	content: "";
+	position: absolute;
+	border-top: 1px solid #ccc;
+	top: 49%;
+	width: 100px;
+}
+.handbook-name span:before {
+	left: 0;
+	margin-left: -110px;
+}
+.handbook-name span:after {
+	right: 0;
+	margin-right: -110px;
+}
+
+@media (max-width: 640px) {
+	.handbook-name span:before,
+	.handbook-name span:after {
+		width: 50px;
+	}
+
+	.handbook-name span:before {
+		margin-left: -55px;
+	}
+
+	.handbook-name span:after {
+		margin-right: -55px;
+	}
+}
+
+@media (max-width: 480px) {
+	.handbook-name span:before,
+	.handbook-name span:after {
+		width: 0;
+	}
+}
+
+nav.handbook-navigation {
+	font-size: 14px;
+	margin: 2em 0;
+	overflow: auto;
+}
+nav.handbook-navigation .nav-links a {
+	width: 49%;
+	border: 0;
+	display: inline-block;
+}
+.nav-handbook-navigation .nav-links a[rel="prev"] {
+	text-align: left;
+}
+nav.handbook-navigation .nav-links a[rel="next"] {
+	text-align: right;
+	float: right;
+}
+
+.handbook-breadcrumbs {
+	position: absolute;
+	top: 4rem;
+	left: 280px;
+	font-size: 1.25rem;
+}
+
+.single-handbook .handbook-breadcrumbs ~ #primary {
+	padding-top: 8rem;
+}
+
+.single-handbook .handbook-name-container ~ .handbook-breadcrumbs {
+	top: 5rem;
+}
+
+.single-handbook .handbook-name-container ~ .handbook-breadcrumbs ~ #primary {
+	padding-top: 10rem;
+}
+
+@media (max-width: 875px) {
+	.handbook-breadcrumbs {
+		top: 3rem;
+		left: 22px;
+	}
+
+	.single-handbook .handbook-breadcrumbs ~ #primary {
+		padding-top: 7rem;
+	}
+
+	.single-handbook .handbook-name-container ~ .handbook-breadcrumbs {
+		top: 5rem;
+	}
+
+	.single-handbook .handbook-name-container ~ .handbook-breadcrumbs ~ #primary {
+		padding-top: 10rem;
+	}
+}
+
+/** Table of Contents */
+.post-type-archive-handbook div.table-of-contents,
+.single-handbook div.table-of-contents {
+	float: right;
+	width: 250px;
+	background: #f7f7f7;
+	border: 1px solid #eee;
+	margin: 0 0 15px 15px;
+	z-index: 1;
+	position: relative;
+	color: #555d66;
+}
+
+.single-handbook div.table-of-contents {
+	background-color: #fff;
+	box-shadow: 0 0 8px rgba(0,0,0,0.1);
+	border-radius: 3px;
+}
+
+@media (min-width: 971px) {
+	.post-type-archive-handbook div.table-of-contents,
+	.single-handbook div.table-of-contents {
+		margin: -15px -30px 15px 15px;
+	}
+}
+
+.post-type-archive-handbook div.table-of-contents h2,
+.post-type-archive-handbook div.table-of-contents h3,
+.single-handbook div.table-of-contents h2,
+.single-handbook div.table-of-contents h3 {
+	margin: 0;
+	padding: 7px 12px;
+	font-size: 1.3em;
+	color: #32373c;
+	text-transform: uppercase;
+	border-bottom: 1px solid #eee;
+}
+
+.post-type-archive-handbook ul.items,
+.single-handbook ul.items {
+	margin: 0;
+	list-style-type: none;
+	padding: 1rem;
+}
+
+.post-type-archive-handbook ul.items li,
+.single-handbook ul.items li {
+	padding: 4px;
+}
+
+.post-type-archive-handbook ul.items li ul li,
+.post-type-archive-handbook ul.items li ul li ul li,
+.single-handbook ul.items li ul li,
+.single-handbook ul.items li ul li ul li {
+	padding-bottom: 0;
+}
+
+.post-type-archive-handbook ul.items li a,
+.single-handbook ul.items li a {
+	text-decoration: none;
+}
+
+.post-type-archive-handbook ul.items li a:hover,
+.single-handbook ul.items li a:hover {
+	color: rgb(190, 54, 49);
+	text-decoration: underline;
+}
+
+/* Highlight current heading and adjust scroll position for fixed toolbar */
+.toc-heading:target {
+	position: relative;
+	padding-top: 50px;
+	margin-top: -50px;
+}
+
+/* Remove negative margin because there is no jump link before these headlines */
+.entry-content h2.toc-heading:first-of-type:target,
+.entry-content h3.toc-heading:first-of-type:target,
+h2.toc-heading + h3.toc-heading:target {
+	margin-top: 0;
+}
+
+.toc-heading:target:before {
+	content: '';
+	position: absolute;
+	left: -10px;
+	top: 50px;
+	border-left: 5px solid rgb(190, 54, 49);
+	height: 50%;
+	height: calc(100% - 50px);
+}
+
+.toc-jump {
+	position: relative;
+	height: 50px;
+}
+
+.toc-jump:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.toc-jump a {
+	z-index: 1;
+}
+
+@media (max-width: 480px) {
+	.post-type-archive-handbook div.table-of-contents,
+	.single-handbook div.table-of-contents {
+		display: none;
+	}
+}
+
+/** Menu */
+
+.post-type-archive-handbook #secondary aside.widget_wporg_handbook_pages,
+.post-type-archive-handbook #secondary aside.widget_nav_menu,
+.single-handbook #secondary aside.widget_wporg_handbook_pages,
+.single-handbook #secondary aside.widget_nav_menu {
+	font-size: 16px;
+}
+
+.widget_wporg_handbook_pages h1 {
+	font-size: 1.6em;
+	font-weight: bold;
+	margin-bottom: 0.6em;
+}
+
+.menu-table-of-contents-container {
+	font-size: 0.8em;
+}
+.menu-table-of-contents-container ul {
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none;
+}
+#secondary .menu-table-of-contents-container ul li {
+	border-top: 1px solid rgba(0,0,0,0.05);
+	padding: 0;
+	position: relative;
+}
+#secondary .menu-table-of-contents-container ul ul {
+	margin-left: 12px;
+	border-left: 1px solid rgba(0,0,0,0.05);
+}
+.menu-table-of-contents-container ul li .expandable {
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: stretch;
+	position: relative;
+}
+.menu-table-of-contents-container ul li .dashicons {
+	position: absolute;
+	right: 0;
+	cursor: pointer;
+	padding: 8px;
+	display: inline-block;
+	width: auto;
+	height: 100%;
+	color: rgb(190, 54, 49);
+	background-color: #fafafa;
+	border: 0;
+	border-left: 1px solid rgba(0,0,0,0.05);
+	border-radius: 0;
+	box-shadow: none;
+	-webkit-appearance: none;
+}
+.menu-table-of-contents-container ul li .dashicons:hover,
+.menu-table-of-contents-container ul li .dashicons:focus {
+	color: #fff;
+	background-color: rgb(190, 54, 49);
+}
+.menu-table-of-contents-container ul li.open > div > .dashicons {
+	transform: rotate(180deg);
+	border-right: 1px solid rgba(0,0,0,0.05);
+	border-left: none;
+}
+.menu-table-of-contents-container .current_page_ancestor:not(.open) .expandable .dashicons:not(:focus),
+.menu-table-of-contents-container .current_page_item .expandable .dashicons:not(:focus) {
+	background: #fff;
+	color: rgb(190, 54, 49);
+}
+.menu-table-of-contents-container ul a {
+	display: block;
+	width: 100%;
+	padding: 8px 40px 8px 8px;
+	text-decoration: none;
+}
+.menu-table-of-contents-container ul a:hover,
+.menu-table-of-contents-container ul a:focus {
+	color: #fff;
+	background-color: rgb(190, 54, 49);
+}
+.menu-table-of-contents-container .current_page_ancestor .expandable .dashicons:hover,
+.menu-table-of-contents-container .current_page_item .expandable .dashicons:hover {
+	background-color: rgb(190, 54, 49) !important;
+	color: #fff !important;
+}
+.menu-table-of-contents-container ul a.active,
+.menu-table-of-contents-container .current-menu-item > a {
+	color: #555;
+	background-color: #fff;
+}
+.menu-table-of-contents-container > ul > li:last-child {
+	border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.menu-table-of-contents-container > ul > li .children > li > a {
+	padding-left: 13px;
+}
+.menu-table-of-contents-container > ul > li .children > li > ul > li > a {
+	padding-left: 8px;
+}
+
+.menu-table-of-contents-container > ul > li.open > div > a:not(:focus) {
+	color: rgb(190, 54, 49);
+}
+.menu-table-of-contents-container > ul > li.open > div > a:hover {
+	color: #fff;
+	background-color: rgb(190, 54, 49);
+}
+.menu-table-of-contents-container ul.default-open {
+	display: block !important;
+}
+.menu-table-of-contents-container .current-menu-item ul,
+.menu-table-of-contents-container .current-menu-ancestor ul {
+	display: block;
+}
+.menu-table-of-contents-container .children {
+	overflow: hidden;
+	display: none;
 }
 
 /* Override wp4.css form styles for o2 */

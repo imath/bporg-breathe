@@ -116,6 +116,18 @@ function styles() {
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\styles', 11 );
 
+function scripts() {
+	if ( function_exists( 'wporg_is_handbook' ) && wporg_is_handbook() ) {
+		wp_enqueue_script(
+			'bporg-breathe-chapters',
+			get_stylesheet_directory_uri() . '/js/chapters.js',
+			array( 'jquery' ),
+			'20191005'
+		);
+	}
+}
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\scripts', 11 );
+
 function inline_scripts() {
 	$current_site = get_site();
 	?>
@@ -215,3 +227,88 @@ function add_site_slug_to_body_class( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', __NAMESPACE__ . '\add_site_slug_to_body_class' );
+
+/**
+ * Disables Jetpack Mentions on any handbook page or comment.
+ *
+ * More precisely, this prevents the linked mentions from being shown. A more
+ * involved approach (to include clearing meta-cached data) would be needed to
+ * more efficiently prevent mentions from being looked for in the first place.
+ *
+ * @param string $linked  The linked mention.
+ * @param string $mention The term being mentioned.
+ * @return string
+ */
+function disable_mentions_for_handbook( $linked, $mention ) {
+	if ( function_exists( 'wporg_is_handbook' ) && wporg_is_handbook() && ! is_single( 'credits' ) ) {
+		return '@' . $mention;
+	}
+
+	return $linked;
+}
+add_filter( 'jetpack_mentions_linked_mention', __NAMESPACE__ . '\disable_mentions_for_handbook', 10, 2 );
+
+/**
+ * Include a new action to edit the post type within the Block Editor.
+ *
+ * @since 1.0.0
+ *
+ * @param array   $actions The registered o2 post actions.
+ * @param integer $post_id The Post ID.
+ * @return array           The registered post actions.
+ */
+function get_post_actions( $actions = array(), $post_id = 0 ) {
+	if ( current_user_can( 'edit_post', $post_id ) ) {
+		$actions[35] = array(
+			'action' => 'block-edit',
+			'href' => get_edit_post_link( $post_id ),
+			'classes' => array( 'edit-post-link', 'o2-edit' ),
+			'rel' => $post_id,
+			'initialState' => 'default'
+		);
+	}
+
+	return $actions;
+}
+add_filter( 'o2_filter_post_actions', __NAMESPACE__ . '\get_post_actions', 20, 2 );
+
+/**
+ * Registers a new post action state to allow the Block Edit action in o2.
+ *
+ * @since 1.0.0
+ */
+function register_post_action_states() {
+	if ( ! function_exists( 'o2_register_post_action_states' ) ) {
+		return;
+	}
+
+	o2_register_post_action_states( 'block-edit',
+		array(
+			'default' => array(
+				'shortText' => __( 'Edit', 'o2' ),
+				'title' => __( 'Edit', 'o2' ),
+				'classes' => array( 'no-ajax' ),
+				'genericon' => 'genericon-wordpress'
+			),
+		)
+	);
+}
+add_action( 'init', __NAMESPACE__ . '\register_post_action_states' );
+
+/**
+ * Use a regular link instead of Ajax for the Block Edit post action.
+ *
+ * @since 1.0.0
+ *
+ * @param string  $html   HTML output for the post action.
+ * @param array   $action The available post actions.
+ * @return string         HTML output for the Block Edit post action.
+ */
+function post_action_html( $html = '', $action = array() ) {
+	if ( 'block-edit'=== $action[ 'action' ] && ! empty( $html ) ) {
+		$html = str_replace( array( 'o2-edit', ' data-action="block-edit"' ), '', $html );
+	}
+
+	return $html;
+}
+add_filter( 'o2_filter_post_action_html', __NAMESPACE__ . '\post_action_html', 15, 2 );

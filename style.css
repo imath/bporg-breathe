@@ -1134,6 +1134,17 @@ body .meta a,
 	#header {
 		z-index: 999999;
 	}
+	#wpadminbar {
+		z-index: 88888;
+		height: 56px !important;
+		position: absolute;
+	}
+	body.admin-bar header#masthead {
+		margin-top: 137px;
+	}
+	body.admin-bar #secondary {
+		margin-top: 90px;
+	}
 	#main {
 		margin: 100px 10px 40px 10px;
 	}

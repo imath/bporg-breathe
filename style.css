@@ -269,7 +269,8 @@ input[type="submit"] {
 	line-height: 1;
 }
 
-.site-header .site-title a:before {
+.site-header .site-title a:before,
+.navigation-main ul li.icon a:before {
 	-webkit-font-smoothing: antialiased;
 	font: normal 32px/1 'Genericons';
 	display: inline-block;
@@ -280,6 +281,11 @@ input[type="submit"] {
 	padding-right: 5px;
 	position: relative;
 	top: -2px;
+}
+
+.navigation-main ul li.icon a:before {
+	vertical-align: middle;
+	font-size: 18px;
 }
 
 body.contribute-bp-core .site-title a:before,
@@ -298,6 +304,18 @@ body.contribute-support .site-title a:before {
 
 body.contribute-documentation .site-title a:before {
 	content: "\f444";
+}
+
+.navigation-main ul li.icon.report a:before {
+	content: "\f50a";
+}
+
+.navigation-main ul li.icon.reports a:before {
+	content: "\f425";
+}
+
+.navigation-main ul li.icon.browser a:before {
+	content: "\f504";
 }
 
 @media (max-width: 500px) {

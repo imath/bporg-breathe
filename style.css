@@ -20,6 +20,7 @@
 	font-size: 13px;
 	position: fixed;
 	top: 0;
+	opacity: 0.95;
 }
 
 #header-inner {
@@ -87,6 +88,13 @@ body.admin-bar header#masthead {
 	content: '\f349'
 }
 
+ul#bb-nav {
+	font-size: 13px;
+	margin: 0 0 24px 0;
+	line-height: 20px;
+	font-family: 'Open Sans', sans-serif;
+}
+
 #nav {
 	float: right;
 	margin: 30px 0 0 0;
@@ -94,7 +102,7 @@ body.admin-bar header#masthead {
 }
 #nav li {
 	display: inline;
-	margin: 0 3px 0 3px;
+	margin: 0 3px 0 1px;
 	list-style: none;
 }
 #nav li a {

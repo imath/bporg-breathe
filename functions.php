@@ -269,7 +269,7 @@ function welcome_box() {
 			<?php edit_post_link( __( 'Edit', 'bporg-breathe' ), '', '', $welcome->ID, 'post-edit-link ' . $class ); ?>
 			<button type="button" id="contribute-welcome-toggle" data-hash="<?php echo $content_hash; ?>" data-cookie="<?php echo $cookie; ?>"><?php echo $label; ?></button>
 		</div>
-		<div class="entry-content clear <?php echo $class; ?>"">
+		<div class="entry-content clear <?php echo $class; ?>">
 			<?php the_content(); ?>
 		</div>
 	</div>

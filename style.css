@@ -288,22 +288,10 @@ input[type="submit"] {
 	font-size: 18px;
 }
 
-body.contribute-bp-core .site-title a:before,
-body.contribute-development .site-title a:before,
-body.contribute-core .site-title a:before {
-	content: "\f462";
-}
-
-body.contribute-translations .site-title a:before {
-	content: "\f475";
-}
-
-body.contribute-support .site-title a:before {
+body.bporg-make .site-title a:before {
 	content: "\f461";
-}
-
-body.contribute-documentation .site-title a:before {
-	content: "\f444";
+	transform: rotate(-90deg);
+	margin-top: -5px;
 }
 
 .navigation-main ul li.icon.report a:before {
@@ -412,8 +400,8 @@ body.contribute-documentation .site-title a:before {
 	font-size: 14px;
 }
 
-.bporg-contribute .site-title a:before,
-body.bporg-contribute #headline h2 a:before {
+.bporg-make .site-title a:before,
+body.bporg-make #headline h2 a:before {
 	vertical-align: middle; /* overrides wp4.css */
 }
 
@@ -977,6 +965,13 @@ nav.o2-post-footer-actions ul li > span > a {
 	box-shadow: none;
 	text-shadow: none;
 	border: solid 1px #c1403b;
+	background-color: #c1403b;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    margin: 0;
+    padding: 12px 24px;
+    text-align: center;
 }
 
 .contact-submit button[type="submit"]:hover {

@@ -31,46 +31,124 @@ function after_setup_theme() {
 	add_action( 'customize_register', __NAMESPACE__ . '\customize_register' );
 
 	add_theme_support( 'starter-content', array(
-        // Set up nav menus
-        'nav_menus'   => array(
-            // Assign a menu to the "header-nav-menu" location.
-            'header-nav-menu' => array(
-                'name'  => __( 'BuddyPress.org nav', 'bporg-developer' ),
-                'items' => array(
-                    'about' => array(
-                        'type'  => 'custom',
-                        'title' => __( 'About', 'bporg-developer' ),
-                        'url'   => 'https://buddypress.org/about/',
-                    ),
-                    'plugins' => array(
-                        'type'  => 'custom',
-                        'title' => __( 'Plugins', 'bporg-developer' ),
-                        'url'   => 'https://buddypress.org/plugins/',
-                    ),
-                    'themes' => array(
-                        'type'  => 'custom',
-                        'title' => __( 'Themes', 'bporg-developer' ),
-                        'url'   => 'https://buddypress.org/themes/',
-                    ),
-                    'documentation' => array(
-                        'type'  => 'custom',
-                        'title' => __( 'Documentation', 'bporg-developer' ),
-                        'url'   => 'https://codex.buddypress.org/',
-                    ),
-                    'blog' => array(
-                        'type'  => 'custom',
-                        'title' => __( 'Blog', 'bporg-developer' ),
-                        'url'   => 'https://buddypress.org/blog/',
-                    ),
-                    'download' => array(
-                        'type'  => 'custom',
-                        'title' => __( 'Download', 'bporg-developer' ),
-                        'url'   => 'https://buddypress.org/download/',
-                    ),
-                ),
-            ),
-        ),
-    ) );
+		// Create initial pages.
+		'posts' => array(
+			'home' => array(
+				'post_title' => __( 'Get Involved', 'bporg-breathe' ),
+				'post_type'  => 'page',
+				'post_name'  => 'get-involved',
+				'post_content' => __( 'Replace this content with the home page content.', 'bporg-breathe' ),
+				'template'   => 'full-width.php',
+			),
+			'updates' => array(
+				'post_title' => __( 'Updates', 'bporg-breathe' ),
+				'post_type'  => 'page',
+				'post_name'  => 'updates',
+			),
+			'welcome' => array(
+				'post_title'   => __( 'Welcome', 'bporg-breathe' ),
+				'post_type'    => 'page',
+				'post_name'    => 'welcome',
+				'post_content' => __( 'Replace this content with the welcome box content.', 'bporg-breathe' ),
+			),
+			'handbook' => array(
+				'post_title' => __( 'BuddyPress Contributor Handbook', 'bporg-breathe' ),
+				'post_type'  => 'handbook',
+				'post_name'  => 'handbook',
+				'menu_order' => 0,
+			),
+		),
+
+		// Default to a static front page and assign the front and posts pages.
+		'options' => array(
+			'show_on_front' => 'page',
+			'page_on_front' => '{{home}}',
+			'page_for_posts' => '{{updates}}',
+		),
+
+		// Set the site title and description.
+		'theme_mods' => array(
+			'blogname'        => __( 'Get Involved', 'bporg-breathe' ),
+			'blogdescription' => __( 'Welcome to the BuddyPress open source project.', 'bporg-breathe' ),
+		),
+
+		// Set up nav menus
+		'nav_menus'   => array(
+			// Assign a menu to the "header-nav-menu" location.
+			'header-nav-menu' => array(
+				'name'  => __( 'BuddyPress.org nav', 'bporg-breathe' ),
+				'items' => array(
+					'about' => array(
+						'type'  => 'custom',
+						'title' => __( 'About', 'bporg-breathe' ),
+						'url'   => 'https://buddypress.org/about/',
+					),
+					'documentation' => array(
+						'type'  => 'custom',
+						'title' => __( 'Documentation', 'bporg-breathe' ),
+						'url'   => 'https://codex.buddypress.org/',
+					),
+					'get_involved' => array(
+						'type'      => 'post_type',
+						'object'    => 'page',
+						'object_id' => '{{home}}',
+					),
+					'news' => array(
+						'type'  => 'custom',
+						'title' => __( 'Blog', 'bporg-breathe' ),
+						'url'   => 'https://buddypress.org/blog/',
+					),
+					'support' => array(
+						'type'  => 'custom',
+						'title' => __( 'Support', 'bporg-breathe' ),
+						'url'   => 'https://buddypress.org/themes/',
+					),
+					'download' => array(
+						'type'  => 'custom',
+						'title' => __( 'Download', 'bporg-breathe' ),
+						'url'   => 'https://buddypress.org/download/',
+					),
+				),
+			),
+
+			// Assign a menu to the "reference-home-api" location.
+			'primary' => array(
+				'name' => __( 'Make BuddyPress Menu', 'bporg-breathe' ),
+				'items' => array(
+					'news' => array(
+						'type'      => 'post_type',
+						'title'     => __( 'Project Updates', 'bporg-breathe' ),
+						'object'    => 'page',
+						'object_id' => '{{updates}}',
+					),
+					'handbook' => array(
+						'type'      => 'post_type',
+						'title'     => __( 'Handbook', 'bporg-breathe' ),
+						'object'    => 'handbook',
+						'object_id' => '{{handbook}}',
+					),
+					'tickets' => array(
+						'type'    => 'custom',
+						'title'   => __( 'Tickets', 'bporg-breathe' ),
+						'url'     => 'https://buddypress.trac.wordpress.org/report',
+						'classes' => 'icon reports',
+					),
+					'source' => array(
+						'type'    => 'custom',
+						'title'   => __( 'Browse source', 'bporg-breathe' ),
+						'url'     => 'https://buddypress.trac.wordpress.org/browser',
+						'classes' => 'icon browser',
+					),
+					'issue' => array(
+						'type'    => 'custom',
+						'title'   => __( 'Report a bug', 'bporg-breathe' ),
+						'url'     => 'https://buddypress.trac.wordpress.org/newticket',
+						'classes' => 'icon report',
+					),
+				),
+			),
+		),
+	) );
 }
 add_action( 'after_setup_theme', __NAMESPACE__ . '\after_setup_theme', 11 );
 
@@ -140,13 +218,13 @@ function inline_scripts() {
 						'; expires=Thu, 01 Jan 1970 00:00:00 GMT' +
 						'; domain=<?php echo esc_js( $current_site->domain ); ?>' +
 						'; path=<?php echo esc_js( $current_site->path ); ?>';
-					jQuery( '#contribute-welcome-toggle' ).text( '<?php esc_attr_e( 'Hide welcome box', 'bporg' ); ?>' );
+					jQuery( '#contribute-welcome-toggle' ).text( '<?php esc_attr_e( 'Hide welcome box', 'bporg-breathe' ); ?>' );
 				} else {
 					document.cookie = el.dataset.cookie + '=' + el.dataset.hash +
 						'; expires=Fri, 31 Dec 9999 23:59:59 GMT' +
 						'; domain=<?php echo esc_js( $current_site->domain ); ?>' +
 						'; path=<?php echo esc_js( $current_site->path ); ?>';
-					jQuery( '#contribute-welcome-toggle' ).text( '<?php esc_attr_e( 'Show welcome box', 'bporg' ); ?>' );
+					jQuery( '#contribute-welcome-toggle' ).text( '<?php esc_attr_e( 'Show welcome box', 'bporg-breathe' ); ?>' );
 				}
 
 				jQuery( '.contribute-welcome .entry-content' ).slideToggle();
@@ -170,10 +248,10 @@ function welcome_box() {
 
 	if ( ! $hash || $content_hash !== $hash ) {
 		$class = '';
-		$label = __( 'Hide welcome box', 'bporg' );
+		$label = __( 'Hide welcome box', 'bporg-breathe' );
 	} else {
 		$class = 'hidden';
-		$label = __( 'Show welcome box', 'bporg' );
+		$label = __( 'Show welcome box', 'bporg-breathe' );
 	}
 
 	$columns = preg_split( '|<hr\s*/?>|', $welcome->post_content );
@@ -188,7 +266,7 @@ function welcome_box() {
 	?>
 	<div class="contribute-welcome">
 		<div class="entry-meta">
-			<?php edit_post_link( __( 'Edit', 'bporg' ), '', '', $welcome->ID, 'post-edit-link ' . $class ); ?>
+			<?php edit_post_link( __( 'Edit', 'bporg-breathe' ), '', '', $welcome->ID, 'post-edit-link ' . $class ); ?>
 			<button type="button" id="contribute-welcome-toggle" data-hash="<?php echo $content_hash; ?>" data-cookie="<?php echo $cookie; ?>"><?php echo $label; ?></button>
 		</div>
 		<div class="entry-content clear <?php echo $class; ?>"">
@@ -204,7 +282,7 @@ add_action( 'bporg_breathe_after_header', __NAMESPACE__ . '\welcome_box' );
 function javascript_notice() {
 	?>
 	<noscript class="js-disabled-notice">
-		<?php _e( 'Please enable JavaScript to view this page properly.', 'bporg' ); ?>
+		<?php _e( 'Please enable JavaScript to view this page properly.', 'bporg-breathe' ); ?>
 	</noscript>
 	<?php
 }
@@ -219,9 +297,9 @@ add_action( 'wp_footer', __NAMESPACE__ . '\javascript_notice' );
 function add_site_slug_to_body_class( $classes ) {
 	$current_site = get_site( get_current_blog_id() );
 
-	$classes[] = 'bporg-contribute';
+	$classes[] = 'bporg-make';
 	if ( $current_site ) {
-		$classes[] = 'contribute-' . trim( $current_site->path, '/' );
+		$classes[] = trim( $current_site->path, '/' );
 	}
 
 	return $classes;

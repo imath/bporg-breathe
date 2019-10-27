@@ -34,6 +34,10 @@ body.admin-bar header#masthead {
 	margin-top: 123px;
 }
 
+body:not( .admin-bar ) header#masthead {
+	margin-top: 81px;
+}
+
 #wp-toolbar, #header-inner {
 	margin: 0 auto;
 }

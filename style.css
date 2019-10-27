@@ -750,7 +750,6 @@ article.state-unresolved {
 	background: #cf4944;
 }
 
-
 /*
  * Private post status
  */
@@ -1026,7 +1025,6 @@ nav.o2-post-footer-actions ul li > span > a {
 /*
  * 404 Page
  */
-
 .error404 #nav-below {
 	border: none;
 }
@@ -1034,7 +1032,6 @@ nav.o2-post-footer-actions ul li > span > a {
 /*
  * Page Templates
  */
-
 .page-template-full-width .content-area {
 	width: 100%;
 	position: relative;
@@ -1067,7 +1064,6 @@ nav.o2-post-footer-actions ul li > span > a {
 /*
  * Handbook
  */
-
 .post-type-archive-handbook .site-main .widget-area,
 .single-handbook .site-main .widget-area {
 	float: left;
@@ -1103,13 +1099,12 @@ nav.o2-post-footer-actions ul li > span > a {
 }
 
 .single-handbook .handbook-name-container + #primary {
-padding-top: 5rem;
+	padding-top: 5rem;
 }
 
 /*
 * Callout boxes
 */
-
 .post .callout {
 	padding-bottom: 0;
 }
@@ -1345,7 +1340,6 @@ h2.toc-heading + h3.toc-heading:target {
 }
 
 /** Menu */
-
 .post-type-archive-handbook #secondary aside.widget_wporg_handbook_pages,
 .post-type-archive-handbook #secondary aside.widget_nav_menu,
 .single-handbook #secondary aside.widget_wporg_handbook_pages,

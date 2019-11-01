@@ -7,7 +7,9 @@
  */
 
 // Exit if accessed directly
-defined( 'ABSPATH' ) || exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if ( function_exists( 'o2_hovercards_add_service' ) ) {
 	require __DIR__ . '/inc/o2-hovercards.php';
@@ -155,7 +157,7 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\after_setup_theme', 11 );
 /**
  * Add postMessage support for site title and description in the customizer.
  *
- * @param WP_Customize_Manager $wp_customize The customizer object.
+ * @param \WP_Customize_Manager $wp_customize The customizer object.
  */
 function customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
@@ -310,7 +312,7 @@ add_filter( 'body_class', __NAMESPACE__ . '\add_site_slug_to_body_class' );
  * Defines `link_before` and `link_after` to make icon items accessible for screen readers.
  *
  * @param object  $args  An object of wp_nav_menu() arguments.
- * @param WP_Post $item  Menu item data object.
+ * @param \WP_Post $item  Menu item data object.
  * @return object An object of wp_nav_menu() arguments.
  */
 function add_screen_reader_text_for_icon_menu_items( $args, $item ) {

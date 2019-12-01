@@ -15,6 +15,10 @@ if ( function_exists( 'o2_hovercards_add_service' ) ) {
 	require __DIR__ . '/inc/o2-hovercards.php';
 }
 
+if ( ! is_admin() && file_exists( __DIR__ . '/inc/buddypress.php' ) ) {
+	require __DIR__ . '/inc/buddypress.php';
+}
+
 /**
  * Sets up theme defaults.
  */
@@ -113,7 +117,7 @@ function after_setup_theme() {
 				),
 			),
 
-			// Assign a menu to the "reference-home-api" location.
+			// Assign a menu to the "primary" location.
 			'primary' => array(
 				'name' => __( 'Make BuddyPress Menu', 'bporg-breathe' ),
 				'items' => array(
@@ -209,7 +213,15 @@ function scripts() {
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\scripts', 11 );
 
 function inline_scripts() {
-	$current_site = get_site();
+	if ( is_multisite() ) {
+		$current_site = get_site();
+	} else {
+		$current_site = (object) array(
+			'domain' => str_replace( array( 'https://', 'http://' ), '', site_url() ),
+			'path'   => '/',
+		);
+	}
+
 	?>
 	<script type="text/javascript">
 		var el = document.getElementById( 'contribute-welcome-toggle' );
@@ -297,11 +309,13 @@ add_action( 'wp_footer', __NAMESPACE__ . '\javascript_notice' );
  * @return array Array of CSS classes.
  */
 function add_site_slug_to_body_class( $classes ) {
-	$current_site = get_site( get_current_blog_id() );
-
 	$classes[] = 'bporg-make';
-	if ( $current_site ) {
-		$classes[] = trim( $current_site->path, '/' );
+
+	if ( is_multisite() ) {
+		$current_site = get_site( get_current_blog_id() );
+		if ( $current_site ) {
+			$classes[] = trim( $current_site->path, '/' );
+		}
 	}
 
 	return $classes;

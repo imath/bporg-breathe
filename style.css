@@ -5,7 +5,7 @@
  * Author URI: https://buddypress.org/
  * Template: p2-breathe
  * Description: Child theme of P2 Breathe, with modifications specifically for BuddyPress.org.
- * Version: 1.0.0
+ * Version: 1.0.1
  * License: GNU General Public License
  * Text Domain: bporg-breathe
  * Domain Path: /languages/
@@ -1570,6 +1570,12 @@ body .meta a,
 	body.admin-bar #secondary {
 		margin-top: 90px;
 	}
+
+	body.page-template-full-width #secondary {
+		bottom: inherit;
+		padding-bottom: 20px;
+	}
+
 	#main {
 		margin: 0px 10px 40px 10px;
 	}
@@ -1631,5 +1637,17 @@ body .meta a,
 	#header #nav:hover #bb-menu-icon:before,
 	#header #nav:focus #bb-menu-icon:before {
 		color: #fff;
+	}
+
+	#secondary-content .navigation-main ul li.icon .screen-reader-text {
+		clip: unset;
+		height: auto;
+		overflow: hidden;
+		position: relative!important;
+		width: auto;
+	}
+
+	.navigation-main ul li.icon a:before {
+		color: #9e1611;
 	}
 }

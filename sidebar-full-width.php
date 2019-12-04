@@ -5,7 +5,7 @@
  * o2 needs a sidebar to display the responsive nav nicely.
  *
  * @package bporg-breathe
- * @since 1.0.0
+ * @since 1.0.1
  */
 ?>
 	<div id="secondary" class="widget-area" role="complementary">

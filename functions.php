@@ -423,3 +423,54 @@ function post_action_html( $html = '', $action = array() ) {
 	return $html;
 }
 add_filter( 'o2_filter_post_action_html', __NAMESPACE__ . '\post_action_html', 15, 2 );
+
+/**
+ * Edit o2 options to allow posting from a category page.
+ *
+ * @since 1.0.1
+ *
+ * @param array $options The o2 UI options.
+ * @return array         The o2 UI options.
+ */
+function filter_o2_options( $options = array() ) {
+    if ( is_category() ) {
+        $options['options']['showFrontSidePostBox'] = true;
+    }
+
+    return $options;
+}
+add_filter( 'o2_options', __NAMESPACE__ . '\filter_o2_options' );
+
+/**
+ * Assign the category displayed to the post inserted from the front-end.
+ *
+ * @since 1.0.1
+ *
+ * @param null|WP_Post The post before it is inserted.
+ * @return null|WP_Post The post before it is inserted.
+ */
+function o2_create_post( $post = null ) {
+    $url      = $_SERVER['HTTP_REFERER'];
+    $home_url = home_url();
+
+    if ( $url !== $home_url && ! is_null( $post ) ) {
+        $parts = wp_parse_url( $url );
+
+        $category_base = 'category';
+        if ( $custom_base = get_option( 'category_base' ) ) {
+            $category_base = $custom_base;
+        }
+
+        $category_part = str_replace( trailingslashit( $home_url ) . $category_base, '', $parts['scheme'] . '://' . $parts['host'] . $parts['path'] );
+        $category_slug = explode( '/', trim( $category_part, '/' ) )[0];
+
+        $category = get_category_by_slug( $category_slug );
+        if ( isset( $category->term_id ) && $category->term_id ) {
+            $post->post_category = array( $category->term_id );
+        }
+    }
+
+    return $post;
+}
+add_filter( 'o2_create_post', __NAMESPACE__ . '\o2_create_post', 10, 1 );
+
